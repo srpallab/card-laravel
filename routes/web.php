@@ -10,7 +10,7 @@ use App\Http\Controllers\UserController;
 
 
 Route::group(['middleware' => 'auth'], function(){
-  Route::resource('/', DashboardController::class);
+  Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
   Route::resource('users', UserController::class);
   Route::resource('roles', RolesController::class);
   Route::resource('permissions', PermissionsController::class);

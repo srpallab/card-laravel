@@ -17,14 +17,16 @@
 	</h2>
 	<div class="flex flex-col text-gray-400 py-2">
 	  <label htmlFor="">Email</label>
-	  <input name="email" class="rounded-lg bg-gray-700 mt-2 p-2 focus:border-blue-500 focus:bg-gray-800 focus:outline-none" type="email" value="" />
+	  <input name="email" class="rounded-lg bg-gray-700 mt-2 p-2 focus:border-blue-500 
+		       focus:bg-gray-800 focus:outline-none" type="email" value="" />
 	  <x-input-error :messages="$errors->get('email')" class="mt-2" />
 	</div>
 	<div class="flex flex-col text-gray-400 py-2">
 	  <label htmlFor="">Password</label>
 	  <input
 	  name="password"
-	  class="rounded-lg bg-gray-700 mt-2 p-2 focus:border-blue-500 focus:bg-gray-800 focus:outline-none"
+	  class="rounded-lg bg-gray-700 mt-2 p-2 focus:border-blue-500 focus:bg-gray-800 
+		focus:outline-none"
 	  type="password"
 	  value=""
 	  />
@@ -36,15 +38,16 @@
 	    Remember Me
 	  </p>
 	  <p class="text-center text-blue-500">
-	    <a href="">Forgot Password?</a>
+	    <a href="{{ route('password.email') }}">Forgot Password?</a>
 	  </p>
 	</div>
-	<button class="w-full my-5 py-2 bg-teal-500 shadow-lg shadow-teal-500/50 hover:shadow-teal-500/30 text-white font-semibold rounded-lg">Log In</button>
+	<button class="w-full my-5 py-2 bg-teal-500 shadow-lg shadow-teal-500/50 
+		       hover:shadow-teal-500/30 text-white font-semibold rounded-lg">Log In</button>
 	<p class="text-center text-white">
 	  Don't have account?
-	  <a href="" class="ml-2 text-blue-500">Sign Up</a>
+	  <a href="{{ route('register') }}" class="ml-2 text-blue-500">Sign Up</a>
 	</p>
       </form>
     </div>
-	</div>
+  </div>
 </x-guest-layout>

@@ -10,6 +10,8 @@
     <!-- Fonts -->
     <link rel="stylesheet"
     href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
+    <link rel="stylesheet"
+    href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])

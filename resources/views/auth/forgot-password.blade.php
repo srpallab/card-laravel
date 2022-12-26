@@ -1,33 +1,39 @@
 <x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
 
-        <div class="mb-4 text-sm text-gray-600">
-            {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
-        </div>
+  <div class="grid grid-cols-1 sm:grid-cols-2 h-screen w-full">
+    <div class="hidden sm:block">
+      <img
+      class="w-full h-full object-cover"
+      alt="Login Image"
+      src="{{ asset('images/login.jpg') }}"
+      />
+    </div>
+    <div class="bg-gray-800 flex flex-col justify-center">
+      <form class="max-w-[400px] w-full mx-auto bg-gray-900 p-8 px-8 rounded-lg"
+      method="POST"
+      action="{{ route('password.email') }}">
+	@csrf
+	<h3 class="text-4xl text-white font-bold text-center">
+	  Forgot your password? 
+	</h3>
+	<div class="flex flex-col text-gray-400 py-2">
+	  <label htmlFor="">Email</label>
+	  <input name="email" class="rounded-lg bg-gray-700 mt-2 p-2 focus:border-blue-500 
+		       focus:bg-gray-800 focus:outline-none" type="email" value="" />
+	  <x-input-error :messages="$errors->get('email')" class="mt-2" />
+	</div>
 
-        <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
-
-        <form method="POST" action="{{ route('password.email') }}">
-            @csrf
-
-            <!-- Email Address -->
-            <div>
-                <x-input-label for="email" :value="__('Email')" />
-                <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-                <x-input-error :messages="$errors->get('email')" class="mt-2" />
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <x-primary-button>
-                    {{ __('Email Password Reset Link') }}
-                </x-primary-button>
-            </div>
-        </form>
-    </x-auth-card>
+	<button class="w-full my-5 py-2 bg-teal-500 shadow-lg shadow-teal-500/50 
+		       hover:shadow-teal-500/30 text-white font-semibold rounded-lg">
+	  {{ __('Email Password Reset Link') }}
+	</button>
+	<p class="text-center text-white">
+	  Or
+	  <a href="{{ route('register') }}" class="ml-2 text-blue-500">Sign Up</a>
+	  Or
+	  <a href="{{ route('login') }}" class="ml-2 text-blue-500">Sign In</a>
+	</p>
+      </form>
+    </div>
+  </div>
 </x-guest-layout>

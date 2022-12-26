@@ -36,6 +36,7 @@ x-data="{ open: false }"
     <nav
     :class="{'block': open, 'hidden': !open}"
     class="flex-grow md:block px-4 pb-4 md:pb-0 md:overflow-y-auto">
+      <x-sidebar-menu href="{{ route('dashboard') }}" >Dashboard</x-sidebar-menu>
       @role('admin')
       <x-sidebar-menu href="{{ route('users.index') }}">Users</x-sidebar-menu>
       <x-sidebar-menu href="{{ route('roles.index') }}">Roles</x-sidebar-menu>

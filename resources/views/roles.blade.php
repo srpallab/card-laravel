@@ -1,7 +1,12 @@
 <x-app-layout>
   <x-sidebar></x-sidebar>
   <div class="flex flex-col mt-8 w-full">
-    <div class="py-2 -my-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8 w-full">
+    <div class="p-8 w-full">
+      <div class="w-full flex justify-end">
+	<button class="m-4 p-4 bg-green-700 hover:bg-green-600 rounded-lg text-white">
+	  Create New Role
+	</button>
+      </div>
       <div class="inline-block w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg">
         <table class="w-full">
           <thead>
