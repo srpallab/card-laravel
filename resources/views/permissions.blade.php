@@ -1,5 +1,5 @@
 <x-app-layout>
-  <x-sidebar></x-sidebar>
+  
   <div class="flex flex-col mt-8 w-full">
     <div class="p-8 w-full">
       <div class="w-full flex justify-end">
