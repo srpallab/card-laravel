@@ -36,16 +36,28 @@ x-data="{ open: false }"
     class="flex-grow md:block px-4 pb-4 md:pb-0 md:overflow-y-auto">
       
       @role('admin')
-      <x-sidebar-menu href="{{ route('dashboard') }}" >Dashboard</x-sidebar-menu>
-      <x-sidebar-menu href="{{ route('users.index') }}">Users</x-sidebar-menu>
-      <x-sidebar-menu href="{{ route('roles.index') }}">Roles</x-sidebar-menu>
+	<x-sidebar-menu href="{{ route('dashboard.index') }}" >
+	    Dashboard
+	</x-sidebar-menu>
+	<x-sidebar-menu href="{{ route('users.index') }}">
+	    Users
+	</x-sidebar-menu>
+	<x-sidebar-menu href="{{ route('roles.index') }}">
+	    Roles
+	</x-sidebar-menu>
       @endrole
       @role('superadmin')
-      <x-sidebar-menu href="{{ route('permissions.index') }}"> Permissions </x-sidebar-menu>
+	<x-sidebar-menu href="{{ route('permissions.index') }}">
+	    Permissions
+	</x-sidebar-menu>
       @endrole
-      <x-sidebar-menu href="{{ route('forms.index') }}">Application Form</x-sidebar-menu>
+	<x-sidebar-menu href="{{ route('forms.index') }}">
+	    Application Form
+	</x-sidebar-menu>
     
-      <div @click.away="open = false" class="relative" x-data="{ open: false }">
+	<div @click.away="open = false"
+	     class="relative"
+	     x-data="{ open: false }">
       </div>
     </nav>
 </div>
