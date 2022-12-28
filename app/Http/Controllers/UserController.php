@@ -16,7 +16,8 @@ class UserController extends Controller
    * @return \Illuminate\Http\Response
    */
   public function index() {
-    // dd(Auth::user());
+    // ddd(Auth::user());
+    //if(Aut){}
     $users = User::all();
     return view('users', ['users' => $users]);
   }

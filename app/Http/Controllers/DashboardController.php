@@ -13,6 +13,9 @@ class DashboardController extends Controller
    */
   public function index()
   {
+    if(auth()->user()->roles->count() == 1 and auth()->user()->roles[0]->name == 'user'){
+      return redirect('/user/dashboard');
+    }
     return view('dashboard');
   }
 

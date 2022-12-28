@@ -10,45 +10,47 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthenticatedSessionController extends Controller
 {
-    /**
-     * Display the login view.
-     *
-     * @return \Illuminate\View\View
-     */
-    public function create()
-    {
-        return view('auth.login');
+  /**
+   * Display the login view.
+   *
+   * @return \Illuminate\View\View
+   */
+  public function create()
+  {
+    return view('auth.user-login');
+  }
+
+  /**
+   * Handle an incoming authentication request.
+   *
+   * @param  \App\Http\Requests\Auth\LoginRequest  $request
+   * @return \Illuminate\Http\RedirectResponse
+   */
+  public function store(LoginRequest $request)
+  {
+    $request->authenticate();
+
+    $request->session()->regenerate();
+    if(auth()->user()->roles->count() == 1 and auth()->user()->roles[0]->name == 'user'){
+      return redirect('/user/dashboard');
     }
+    return redirect()->intended(RouteServiceProvider::HOME);
+  }
 
-    /**
-     * Handle an incoming authentication request.
-     *
-     * @param  \App\Http\Requests\Auth\LoginRequest  $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function store(LoginRequest $request)
-    {
-        $request->authenticate();
+  /**
+   * Destroy an authenticated session.
+   *
+   * @param  \Illuminate\Http\Request  $request
+   * @return \Illuminate\Http\RedirectResponse
+   */
+  public function destroy(Request $request)
+  {
+    Auth::guard('web')->logout();
 
-        $request->session()->regenerate();
+    $request->session()->invalidate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
-    }
+    $request->session()->regenerateToken();
 
-    /**
-     * Destroy an authenticated session.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function destroy(Request $request)
-    {
-        Auth::guard('web')->logout();
-
-        $request->session()->invalidate();
-
-        $request->session()->regenerateToken();
-
-        return redirect('/');
-    }
+    return redirect('/');
+  }
 }

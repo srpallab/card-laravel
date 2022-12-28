@@ -1,29 +1,23 @@
 <x-guest-layout>
-  <div class="font-sans bg-gray-100 flex flex-col 
+  <div class="font-sans bg-gray-100 flex flex-col mt-2 
 	      justify-center" x-data="{ open: false}">
     <form
 	class="bg-gray-800 p-6 mx-10 my-2 rounded-lg"
 	method="POST" action="{{ route('register') }}">
       @csrf
-	<div class="flex justify-between items-center">
+	<div class="flex justify-center items-center">
 	    <h2 class="text-4xl text-white font-bold text-center">
 	    User Application
 	</h2>
-	<a class="w-1/5 my-5 py-2 bg-teal-500 shadow-lg 
-		  shadow-teal-500/50 hover:shadow-teal-500/30 
-		  text-white font-semibold rounded-lg 
-		  text-center"
-	   href="{{ route('login') }}">
-	    Log In
-	</a>
 	</div>
 	<div class="w-full pt-4 p-2">
 	<select class="block appearance-none w-full bg-white border border-gray-400 
 		       hover:border-gray-500 p-2 rounded shadow leading-tight 
-		       focus:outline-none focus:shadow-outline">
+		       focus:outline-none focus:shadow-outline"
+	name="card_type">
 	  
-	  <option @click="open=false; console.log(open);">Member Card</option>
-	  <option @click="open=true; console.log(open);">Press Card</option>
+	  <option @click="open=false" value="Member Card">Member Card</option>
+	  <option @click="open=true" value="Press Card">Press Card</option>
 	</select>
 	<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 
 		    text-gray-700">
@@ -31,80 +25,83 @@
       </div>
       <div class="flex">
 	<div class="flex flex-col text-gray-400 p-2 w-1/2">
-	  <label>Name</label>
+	  <label>Name *</label>
 	  <input name="name"
 		 class="rounded-lg bg-gray-700 mt-2 p-2 focus:border-blue-500 
 		       focus:bg-gray-800 focus:outline-none"
 		 type="text"
-		 placeholder="Jhon Doe"
+	  placeholder="Jhon Doe"
+	  required
 	  />
 	  <x-input-error :messages="$errors->get('name')" class="mt-2" />  
 	</div>
 	<div class="flex flex-col text-gray-400 p-2 w-1/2">
-	  <label>Date Of Birth</label>
+	  <label>Date Of Birth *</label>
 	  <input name="dob"
-		 class="rounded-lg bg-gray-700 mt-2 p-2 focus:border-blue-500 
+	  class="rounded-lg bg-gray-700 mt-2 p-2 focus:border-blue-500 
 		       focus:bg-gray-800 focus:outline-none"
-		 type="date"
+	  type="date"
+	  required
 	  />
 	  <x-input-error :messages="$errors->get('dob')" class="mt-2" />  
 	</div>
 	<div class="flex flex-col text-gray-400 p-2 w-1/2">
-	    <label>Email</label>
-	    <input name="email"
-		   class="rounded-lg bg-gray-700 mt-2 p-2 focus:border-blue-500 
-			 focus:bg-gray-800 focus:outline-none"
-		   type="email"
-		   placeholder="example@example.com"
-		   required
-	    />
-	    <x-input-error :messages="$errors->get('email')" class="mt-2" />
+	  <label>Email *</label>
+	  <input name="email"
+	  class="rounded-lg bg-gray-700 mt-2 p-2 focus:border-blue-500 
+		       focus:bg-gray-800 focus:outline-none"
+	  type="email"
+	  placeholder="example@example.com"
+	  required
+	  />
+	  <x-input-error :messages="$errors->get('email')" class="mt-2" />
 	</div>
       </div>
       <div class="flex">
 	  <div class="flex flex-col text-gray-400 p-2 w-1/2">
-	      <label>Password</label>
-	      <input name="password"
-		     class="rounded-lg bg-gray-700 mt-2 p-2 focus:border-blue-500 
-			   focus:bg-gray-800 focus:outline-none"
-		     type="password"
-		     required
-	      />
-	      <x-input-error :messages="$errors->get('email')" class="mt-2" />
+	    <label>Password *</label>
+	    <input name="password"
+	    class="rounded-lg bg-gray-700 mt-2 p-2 focus:border-blue-500 
+			 focus:bg-gray-800 focus:outline-none"
+	    type="password"
+	    required
+	    />
+	    <x-input-error :messages="$errors->get('email')" class="mt-2" />
 	  </div>
 	  <div class="flex flex-col text-gray-400 p-2 w-1/2">
-	      <label>Confirm Password</label>
-	      <input name="password_confirmation"
-		     class="rounded-lg bg-gray-700 mt-2 p-2 focus:border-blue-500 
-			   focus:bg-gray-800 focus:outline-none"
-		     type="password"
-		     required
-	      />
-	      <x-input-error :messages="$errors->get('phone')" class="mt-2" />
+	    <label>Confirm Password *</label>
+	    <input name="password_confirmation"
+	    class="rounded-lg bg-gray-700 mt-2 p-2 focus:border-blue-500 
+			 focus:bg-gray-800 focus:outline-none"
+	    type="password"
+	    required
+	    />
+	    <x-input-error :messages="$errors->get('phone')" class="mt-2" />
 	  </div>
 	  <div class="flex flex-col text-gray-400 p-2 w-1/2">
-	      <label>Phone</label>
-	      <input name="phone"
-		     class="rounded-lg bg-gray-700 mt-2 p-2 focus:border-blue-500 
-			   focus:bg-gray-800 focus:outline-none"
-		     type="tel"
-		     pattern="[0-9]{11}"
-		     placeholder="9122828383"
-	      />
-	      <x-input-error :messages="$errors->get('phone')" class="mt-2" />
+	    <label>Phone *</label>
+	    <input name="phone"
+	    class="rounded-lg bg-gray-700 mt-2 p-2 focus:border-blue-500 
+			 focus:bg-gray-800 focus:outline-none"
+	    type="tel"
+	    pattern="[0-9]{11}"
+	    placeholder="9122828383"
+	    required
+	    />
+	    <x-input-error :messages="$errors->get('phone')" class="mt-2" />
 	  </div>
       </div>
       <div class="flex">
 	  <div class="flex flex-col text-gray-400 p-2 w-1/3">
-	      <label>WhatsApp Phone</label>
-	      <input name="waphone"
-		     class="rounded-lg bg-gray-700 mt-2 p-2 focus:border-blue-500 
-			   focus:bg-gray-800 focus:outline-none"
-		     type="tel"
-		     pattern="[0-9]{11}"
-		     placeholder="9122828383"
-	      />
-	      <x-input-error :messages="$errors->get('phone')" class="mt-2" />
+	    <label>WhatsApp Phone *</label>
+	    <input name="waphone"
+	    class="rounded-lg bg-gray-700 mt-2 p-2 focus:border-blue-500 
+			 focus:bg-gray-800 focus:outline-none"
+	    type="tel"
+	    pattern="[0-9]{11}"
+	    placeholder="9122828383"
+	    />
+	    <x-input-error :messages="$errors->get('phone')" class="mt-2" />
 	  </div>
 	  <div class="flex flex-col text-gray-400 p-2 w-1/3" x-show="open" >
 	    <label>Father Name</label>
