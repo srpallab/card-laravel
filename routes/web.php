@@ -10,7 +10,7 @@ use App\Http\Controllers\UserController;
 
 Route::get('/', function(){
   return view('forms');
-});
+})->name('home');
 
 Route::group(['middleware' => 'auth'], function(){
   Route::resource('dashboard', DashboardController::class);

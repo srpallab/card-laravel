@@ -45,7 +45,8 @@
 		       hover:shadow-teal-500/30 text-white font-semibold rounded-lg">Log In</button>
 	<p class="text-center text-white">
 	  Don't have account?
-	  <a href="{{ route('register') }}" class="ml-2 text-blue-500">Sign Up</a>
+	    <a href="{{ route('home') }}"
+	       class="ml-2 text-blue-500">Sign Up</a>
 	</p>
       </form>
     </div>
